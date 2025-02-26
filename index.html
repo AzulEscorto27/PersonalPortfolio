@@ -36,8 +36,14 @@
             padding: 10px 0;
         }
 
+        /* Place Top Row at the Very Top */
+        .moving-container.top {
+            top: 0;
+        }
+
+        /* Place Bottom Row at the Very Bottom */
         .moving-container.bottom {
-            margin-top: 50px; /* Adds equal space below the middle content */
+            bottom: 0;
         }
 
         /* Moving Text */
@@ -79,7 +85,7 @@
 <body>
 
     <!-- Moving text rows (Top) -->
-    <div class="moving-container" id="topRow">
+    <div class="moving-container top" id="topRow">
         <span class="moving-text">!!! UNDER CONSTRUCTION !!!</span>
         <span class="moving-text">!!! UNDER CONSTRUCTION !!!</span>
         <span class="moving-text">!!! UNDER CONSTRUCTION !!!</span>
