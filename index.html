@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project: Crisostomo</title>
     <style>
-        /* Base Styles */
+        /* Base Page Styles */
         body {
             font-family: monospace;
             text-align: center;
@@ -18,7 +18,15 @@
             overflow: hidden;
             margin: auto;
             padding: 35vh;
-            transition: background-color 1s, color 1s;
+        }
+
+        /* Moving Text Container */
+        .moving-container {
+            position: absolute;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-around;
         }
 
         /* Moving Text */
@@ -26,15 +34,11 @@
             font-size: 24px;
             font-weight: bold;
             white-space: nowrap;
-            position: absolute;
-            top: 10px;
-            width: 100%;
+            padding: 5px 15px;
             animation: moveRight 5s linear infinite;
         }
 
-        .moving-text.bottom {
-            bottom: 10px;
-            top: auto;
+        .moving-container.bottom .moving-text {
             animation: moveLeft 5s linear infinite;
         }
 
@@ -48,12 +52,28 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
+
+        /* Alternating background color */
+        .moving-container {
+            background-color: #002a5c;
+            color: black;
+            padding: 5px;
+        }
+
+        .alternate {
+            background-color: black;
+            color: #002a5c;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Moving text (Top) -->
-    <div class="moving-text">!!! UNDER CONSTRUCTION !!!</div>
+    <!-- Moving text rows (Top) -->
+    <div class="moving-container" id="topRow">
+        <span class="moving-text">!!! UNDER CONSTRUCTION !!!</span>
+        <span class="moving-text">!!! UNDER CONSTRUCTION !!!</span>
+        <span class="moving-text">!!! UNDER CONSTRUCTION !!!</span>
+    </div>
 
     <!-- Main Content (Centered) -->
     <h1>!!! UNDER CONSTRUCTION !!!</h1>
@@ -61,24 +81,20 @@
     <h3>JERZEEN "JIJIN" BENEDICT R. CALIBARA</h3>
     <p>Hinay hinay, parang pag-ibig na matagal mo nang hinihintay.</p>
 
-    <!-- Moving text (Bottom) -->
-    <div class="moving-text bottom">!!! UNDER CONSTRUCTION !!!</div>
+    <!-- Moving text rows (Bottom) -->
+    <div class="moving-container bottom" id="bottomRow">
+        <span class="moving-text">!!! UNDER CONSTRUCTION !!!</span>
+        <span class="moving-text">!!! UNDER CONSTRUCTION !!!</span>
+        <span class="moving-text">!!! UNDER CONSTRUCTION !!!</span>
+    </div>
 
     <script>
-        function toggleColors() {
-            let body = document.body;
-            let currentColor = getComputedStyle(body).backgroundColor;
-            
-            if (currentColor === "rgb(0, 0, 0)") { 
-                body.style.backgroundColor = "#002a5c"; // Blue
-                body.style.color = "black"; // Text turns black
-            } else {
-                body.style.backgroundColor = "black"; // Back to black
-                body.style.color = "#002a5c"; // Text turns blue
-            }
+        function toggleRowColors() {
+            document.getElementById("topRow").classList.toggle("alternate");
+            document.getElementById("bottomRow").classList.toggle("alternate");
         }
 
-        setInterval(toggleColors, 1000); // Change colors every second
+        setInterval(toggleRowColors, 1000); // Switch colors every second
     </script>
 
 </body>
